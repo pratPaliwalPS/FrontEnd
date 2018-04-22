@@ -1,0 +1,46 @@
+<div class="user">
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+   
+  <mat-table [dataSource]="dataSource" matSort> 
+    <ng-container matColumnDef="accrualRuleSeqNumber">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> accrualRuleSeqNumber</mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.accrualRuleSeqNumber}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="contractingparty">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> contractingparty </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.contractingparty}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="contract">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> contract </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.contract}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="endUser">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> endUser </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.endUser}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> status </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.status}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="isdeleted">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> isdeleted </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.isdeleted}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="updatedBy">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> updatedBy </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.updatedBy}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+    <mat-paginator #pagination
+                   [length]="length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   (page)="pageEvent = onPaginateChange($event)">
+    </mat-paginator>
+    
+</div>
